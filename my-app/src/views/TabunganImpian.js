@@ -1,0 +1,97 @@
+import {
+  Text,
+  View,
+  ScrollView,
+  Image,
+  SafeAreaView,
+  FlatList,
+  ImageBackground,
+  Dimensions,
+  TouchableOpacity,
+} from "react-native";
+import { LinearGradient } from "expo-linear-gradient";
+import back from "../../assets/back.png";
+import dots from "../../assets/3dots.png";
+import CardNabung from "../components/atoms/CardNabung";
+import gambar1 from "../../assets/BI.png";
+import gambar2 from "../../assets/Taxes.png";
+
+import bca from "../../assets/bca.png";
+export default function TabunganImpian() {
+  return (
+    <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
+      <ScrollView>
+        <View
+          style={{
+            paddingTop: 65,
+            paddingHorizontal: 20,
+          }}
+        >
+          <View
+            style={{
+              flexDirection: "row",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
+          >
+            <TouchableOpacity>
+              <Image source={back} style={{ width: 27, height: 27 }} />
+            </TouchableOpacity>
+            <Text>Tabungan Impian</Text>
+            <TouchableOpacity>
+              {/* <Image source={dots} style={{ width: 27, height: 27 }} /> */}
+            </TouchableOpacity>
+          </View>
+
+          <View style={{ marginVertical: 35 }}>
+            <Text style={{ fontWeight: "bold" }}>
+              Yuk Nabung dan Wujudkan Impianmu Bersama Allo Sekarang!
+            </Text>
+          </View>
+
+          <View
+            style={{ flexDirection: "column", rowGap: 16, marginBottom: 10 }}
+          >
+            <CardNabung
+              title={"Tanpa Administrasi"}
+              paragraf={
+                "Tabungan Allomoney: Bebas biaya, keuntungan nyata tanpa tambahan."
+              }
+              imageUrl={gambar1}
+            />
+            <CardNabung
+              title={"Nabung Dengan Target"}
+              paragraf={"Nabung Allomoney: Target tercapai, tabungan terarah."}
+              imageUrl={gambar2}
+            />
+          </View>
+
+          <TouchableOpacity>
+            <LinearGradient
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 0 }}
+              colors={["#ae823aff", "#ffc66aff"]}
+              style={{
+                padding: 10,
+                paddingHorizontal: 15,
+                borderRadius: 20,
+                marginTop: 27,
+                marginHorizontal: 15,
+              }}
+            >
+              <Text
+                style={{
+                  textAlign: "center",
+                  color: "white",
+                  fontSize: 12,
+                }}
+              >
+                Kuy, Atur Sekarang
+              </Text>
+            </LinearGradient>
+          </TouchableOpacity>
+        </View>
+      </ScrollView>
+    </SafeAreaView>
+  );
+}
