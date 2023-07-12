@@ -17,6 +17,7 @@ import DompetFocused from "../../assets/solar_wallet-outline.png";
 // import CreateTransaction from "../views/CreateTransaction";
 import TambahTransaksi from "../views/TambahTransaksi";
 import HomeSplashScreen from "../views/Login/HomeSplashScreen";
+import Riwayat from "../../assets/clipboard-text.png";
 
 const Tab = createBottomTabNavigator();
 
@@ -30,7 +31,7 @@ const TabManager = () => {
           if (route.name == "Beranda") {
             icon = Beranda;
           } else if (route.name == "Aktivitas") {
-            icon = Aktivitas;
+            icon = DompetFocused;
           } else if (route.name == "Dompet") {
             icon = DompetFocused;
           } else if (route.name == "Akun") {

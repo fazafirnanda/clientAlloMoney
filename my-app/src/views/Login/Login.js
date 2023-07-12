@@ -12,19 +12,36 @@ import {
   TextInput,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import Allomoney from "../../../assets/allomoney.png";
 import back from "../../../assets/back.png";
+import axios from "axios";
 
 export default function Login({ navigation }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const baseUrl = "https://alo-money-production.up.railway.app/user/login";
 
   const submit = () => {
     const data = {
       email,
       password,
     };
-    console.log(data);
+
+    axios
+      .post(baseUrl, data)
+      .then(({ data }) => {
+        console.log(data);
+        // navigation.navigate("Home");
+        AsyncStorage.setItem("access_token", data.access_token);
+        AsyncStorage.setItem("email", data.email);
+        AsyncStorage.setItem("UserId", data.UserId);
+
+        console.log("BERHASIL");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>

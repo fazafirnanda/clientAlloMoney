@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Text,
   View,
@@ -12,8 +12,11 @@ import {
   TextInput,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import Allomoney from "../../../assets/allomoney.png";
 import back from "../../../assets/back.png";
+const baseUrl = "https://alo-money-production.up.railway.app/user/register";
+import axios from "axios";
 
 export default function Daftar({ navigation }) {
   const [namaLengkap, setNamaLengkap] = useState("");
@@ -26,7 +29,16 @@ export default function Daftar({ navigation }) {
       email,
       password,
     };
-    console.log(data);
+
+    axios
+      .post(baseUrl, data)
+      .then((result) => {
+        console.log("berhasil");
+        navigation.navigate("Login");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
@@ -128,7 +140,7 @@ export default function Daftar({ navigation }) {
                   fontWeight: "bold",
                 }}
               >
-                Masuk
+                Daftar
               </Text>
             </LinearGradient>
           </TouchableOpacity>
