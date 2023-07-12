@@ -12,8 +12,10 @@ import {
 import { LinearGradient } from "expo-linear-gradient";
 import back from "../../assets/back.png";
 import FormTargetMenabung from "../components/molecules/FormTargetMenabung";
+import { useState } from "react";
 
-export default function TargetRutin() {
+export default function TargetRutin({ navigation }) {
+  const [isTarget, setIsTarget] = useState("Mingguan");
   const width = Dimensions.get("window").width;
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
@@ -43,7 +45,7 @@ export default function TargetRutin() {
                 alignItems: "center",
               }}
             >
-              <TouchableOpacity>
+              <TouchableOpacity onPress={() => navigation.goBack()}>
                 <Image source={back} style={{ width: 27, height: 27 }} />
               </TouchableOpacity>
               <Text style={{ fontWeight: "bold" }}>Target Rutin</Text>
@@ -130,7 +132,10 @@ export default function TargetRutin() {
                   paddingBottom: 15,
                 }}
               >
-                <TouchableOpacity style={{ width: (width * 1) / 5 }}>
+                <TouchableOpacity
+                  style={{ width: (width * 1) / 5 }}
+                  onPress={{}}
+                >
                   <LinearGradient
                     start={{ x: 0, y: 0 }}
                     end={{ x: 1, y: 0 }}

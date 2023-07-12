@@ -12,7 +12,7 @@ import {
 import bca from "../../../assets/bca.png";
 export default function CardNabung({ title, imageUrl, paragraf }) {
   return (
-    <TouchableOpacity
+    <View
       style={{
         borderRadius: 10,
         padding: 20,
@@ -59,6 +59,6 @@ export default function CardNabung({ title, imageUrl, paragraf }) {
           }}
         />
       </View>
-    </TouchableOpacity>
+    </View>
   );
 }

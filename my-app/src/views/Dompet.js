@@ -29,24 +29,18 @@ export default function Dompet() {
           <View
             style={{
               flexDirection: "row",
-              justifyContent: "space-between",
+              justifyContent: "center",
               alignItems: "center",
             }}
           >
-            <TouchableOpacity>
-              <Image source={back} style={{ width: 27, height: 27 }} />
-            </TouchableOpacity>
-            <Text>Dompet</Text>
-            <TouchableOpacity>
-              <Image source={dots} style={{ width: 27, height: 27 }} />
-            </TouchableOpacity>
+            <Text style={{ fontWeight: "bold" }}>Dompet</Text>
           </View>
 
           <View
             style={{
               flexDirection: "column",
               rowGap: 4,
-              paddingVertical: 20,
+              paddingVertical: 30,
               paddingBottom: 15,
             }}
           >
@@ -78,8 +72,8 @@ export default function Dompet() {
                 end={{ x: 1, y: 0 }}
                 colors={["#ae823aff", "#ffc66aff"]}
                 style={{
-                  padding: 20,
-                  borderRadius: 30,
+                  padding: 15,
+                  borderRadius: 15,
                   marginTop: 27,
                   marginHorizontal: 15,
                 }}
