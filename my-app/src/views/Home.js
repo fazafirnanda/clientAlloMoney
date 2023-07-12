@@ -18,16 +18,19 @@ import arrowup from "../../assets/Up.png";
 import arrowdown from "../../assets/Down.png";
 import budget from "../../assets/Group-1.png";
 import celengan from "../../assets/celengan1.png";
+import Riwayat from "../../assets/Vector.png";
+import pemasukan from "../../assets/Vector-2.png";
 import bank from "../../assets/Bank.png";
 import Home2 from "../../assets/Home2.png";
+import CardTransaksi from "../components/atoms/CardTransaksi";
 
-export default function Home() {
+export default function Home({ navigation }) {
   const height = Dimensions.get("window").height;
   const width = Dimensions.get("window").width;
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <ScrollView>
-        <View style={{ backgroundColor: "white" }}>
+        <View style={{ backgroundColor: "white", marginBottom: 25 }}>
           <Image
             source={city}
             style={{
@@ -128,31 +131,32 @@ export default function Home() {
                 }}
               >
                 <View>
-                  <View style={{ elevation: 3 }}>
-                    <Image
-                      source={{
-                        uri: "https://img.utdstc.com/icon/a07/60e/a0760e5b401b2f8bcc29c26498d89636d6cbf4481169ca5b8b53f822406675d1:200",
-                      }}
-                      style={{ width: 60, height: 60 }}
-                    />
-                  </View>
-                  <Text
-                    style={{
-                      textAlign: "center",
-                      fontSize: 10,
-                      lineHeight: 16,
-                    }}
+                  <TouchableOpacity
+                    style={{ alignItems: "center" }}
+                    onPress={() => navigation.navigate("Transaksi")}
                   >
-                    Pemasukkan
-                  </Text>
+                    <View style={{ elevation: 3 }}>
+                      <Image
+                        source={pemasukan}
+                        style={{ width: 25, height: 25, resizeMode: "center" }}
+                      />
+                    </View>
+                    <Text
+                      style={{
+                        textAlign: "center",
+                        fontSize: 10,
+                        lineHeight: 16,
+                      }}
+                    >
+                      Pemasukan
+                    </Text>
+                  </TouchableOpacity>
                 </View>
-                <View>
+                <View style={{ alignItems: "center" }}>
                   <View style={{ elevation: 3 }}>
                     <Image
-                      source={{
-                        uri: "https://img.utdstc.com/icon/a07/60e/a0760e5b401b2f8bcc29c26498d89636d6cbf4481169ca5b8b53f822406675d1:200",
-                      }}
-                      style={{ width: 60, height: 60 }}
+                      source={pemasukan}
+                      style={{ width: 25, height: 25, resizeMode: "center" }}
                     />
                   </View>
                   <Text
@@ -165,13 +169,11 @@ export default function Home() {
                     Pengeluaran
                   </Text>
                 </View>
-                <View>
+                <View style={{ alignItems: "center" }}>
                   <View style={{ elevation: 3 }}>
                     <Image
-                      source={{
-                        uri: "https://img.utdstc.com/icon/a07/60e/a0760e5b401b2f8bcc29c26498d89636d6cbf4481169ca5b8b53f822406675d1:200",
-                      }}
-                      style={{ width: 60, height: 60 }}
+                      source={Riwayat}
+                      style={{ width: 25, height: 25, resizeMode: "center" }}
                     />
                   </View>
                   <Text
@@ -181,26 +183,7 @@ export default function Home() {
                       lineHeight: 16,
                     }}
                   >
-                    Transaksi
-                  </Text>
-                </View>
-                <View>
-                  <View style={{ elevation: 3 }}>
-                    <Image
-                      source={{
-                        uri: "https://img.utdstc.com/icon/a07/60e/a0760e5b401b2f8bcc29c26498d89636d6cbf4481169ca5b8b53f822406675d1:200",
-                      }}
-                      style={{ width: 60, height: 60 }}
-                    />
-                  </View>
-                  <Text
-                    style={{
-                      textAlign: "center",
-                      fontSize: 10,
-                      lineHeight: 16,
-                    }}
-                  >
-                    Tabungan
+                    Riwayat
                   </Text>
                 </View>
               </View>
@@ -221,11 +204,26 @@ export default function Home() {
                 elevation: 2,
               }}
             >
-              <Text style={{ fontWeight: "bold", fontSize: 15 }}>
-                Keuangan Bulan Ini
-              </Text>
-
               <View
+                style={{
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                }}
+              >
+                <Text style={{ fontWeight: "bold", fontSize: 15 }}>
+                  Riwayat Transaksi
+                </Text>
+                <TouchableOpacity
+                  onPress={() => navigation.navigate("Transaksi")}
+                >
+                  <Text style={{ fontSize: 12, lineHeight: 16, color: "gray" }}>
+                    Lihat Detail
+                  </Text>
+                </TouchableOpacity>
+              </View>
+
+              {/* <View
                 style={{
                   flexDirection: "row",
                   justifyContent: "space-between",
@@ -277,6 +275,10 @@ export default function Home() {
                     </Text>
                   </View>
                 </View>
+              </View> */}
+              <View style={{ marginVertical: 10, marginTop: 20, rowGap: 7 }}>
+                <CardTransaksi />
+                <CardTransaksi />
               </View>
             </View>
 
@@ -324,7 +326,9 @@ export default function Home() {
                     gunakan Allo!
                   </Text>
                   <View style={{ flexDirection: "row" }}>
-                    <TouchableOpacity style={{}}>
+                    <TouchableOpacity
+                      onPress={() => navigation.navigate("BudgetBulanan")}
+                    >
                       <LinearGradient
                         start={{ x: 0, y: 0 }}
                         end={{ x: 1, y: 0 }}
@@ -428,7 +432,10 @@ export default function Home() {
                     Yuk Nabung dan Wujudkan Impianmu Bersama Allo!
                   </Text>
                   <View style={{ flexDirection: "row" }}>
-                    <TouchableOpacity style={{}}>
+                    <TouchableOpacity
+                      style={{}}
+                      onPress={() => navigation.navigate("TabunganImpian")}
+                    >
                       <LinearGradient
                         start={{ x: 0, y: 0 }}
                         end={{ x: 1, y: 0 }}
@@ -456,7 +463,7 @@ export default function Home() {
               </View>
             </View>
 
-            <View>
+            {/* <View>
               <Text
                 style={{
                   marginLeft: 13,
@@ -520,7 +527,7 @@ export default function Home() {
                   </View>
                 </View>
               </View>
-            </View>
+            </View> */}
           </View>
         </View>
       </ScrollView>

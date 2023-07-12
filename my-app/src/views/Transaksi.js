@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Text,
   View,
@@ -17,7 +17,19 @@ import short from "../../assets/short.png";
 import dots from "../../assets/3dots.png";
 import { LinearGradient } from "expo-linear-gradient";
 
-export default function Transaksi() {
+export default function Transaksi({ navigation }) {
+  const [isPage, setIsPage] = useState("Pemasukan");
+
+  // const changeTransaction = (value) => {
+  //   setIsPage(value);
+  // };
+
+  // const isFocused = () => {
+  //   if (isPage == "Pemasukan") {
+  //   } else {
+  //   }
+  // };
+
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
       <View
@@ -33,10 +45,10 @@ export default function Transaksi() {
             alignItems: "center",
           }}
         >
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.goBack()}>
             <Image source={back} style={{ width: 27, height: 27 }} />
           </TouchableOpacity>
-          <Text>Data Transaksi</Text>
+          <Text style={{ fontWeight: "bold" }}>Data Transaksi</Text>
           <TouchableOpacity>
             <Image source={dots} style={{ width: 27, height: 27 }} />
           </TouchableOpacity>
@@ -50,58 +62,139 @@ export default function Transaksi() {
             paddingBottom: 15,
           }}
         >
-          <TouchableOpacity style={{ flex: 1 }}>
-            <LinearGradient
-              start={{ x: 0, y: 0 }}
-              end={{ x: 1, y: 0 }}
-              colors={["#ae823aff", "#ffc66aff"]}
-              style={{
-                padding: 9,
-                borderRadius: 30,
-              }}
-            >
-              <Text
-                style={{ textAlign: "center", color: "white", fontSize: 12 }}
+          <TouchableOpacity
+            style={{ flex: 1 }}
+            onPress={() => setIsPage("Pemasukan")}
+          >
+            {isPage == "Pemasukan" ? (
+              <View
+                style={{
+                  padding: 9,
+                  borderWidth: 1,
+                  borderColor: "#e0ac6a",
+                  borderRadius: 30,
+                  backgroundColor: "white",
+                }}
               >
-                Pemasukan
-              </Text>
-            </LinearGradient>
+                <Text
+                  style={{
+                    textAlign: "center",
+                    color: "#e0ac6a",
+                    fontSize: 12,
+                  }}
+                >
+                  Pemasukan
+                </Text>
+              </View>
+            ) : (
+              <LinearGradient
+                start={{ x: 0, y: 0 }}
+                end={{ x: 1, y: 0 }}
+                colors={["#ae823aff", "#ffc66aff"]}
+                style={{
+                  padding: 9,
+                  borderRadius: 30,
+                  borderWidth: 1,
+                  borderColor: "#e0ac6a",
+                }}
+              >
+                <Text
+                  style={{ textAlign: "center", color: "white", fontSize: 12 }}
+                >
+                  Pemasukan
+                </Text>
+              </LinearGradient>
+            )}
           </TouchableOpacity>
 
-          <TouchableOpacity style={{ flex: 1 }}>
-            <LinearGradient
-              start={{ x: 0, y: 0 }}
-              end={{ x: 1, y: 0 }}
-              colors={["#ae823aff", "#ffc66aff"]}
-              style={{
-                padding: 9,
-                borderRadius: 30,
-              }}
-            >
-              <Text
-                style={{ textAlign: "center", color: "white", fontSize: 12 }}
+          <TouchableOpacity
+            style={{ flex: 1 }}
+            onPress={() => setIsPage("Pengeluaran")}
+          >
+            {isPage == "Pengeluaran" ? (
+              <View
+                style={{
+                  padding: 9,
+                  borderWidth: 1,
+                  borderColor: "#e0ac6a",
+                  borderRadius: 30,
+                  backgroundColor: "white",
+                }}
               >
-                Pengeluaran
-              </Text>
-            </LinearGradient>
+                <Text
+                  style={{
+                    textAlign: "center",
+                    color: "#e0ac6a",
+                    fontSize: 12,
+                  }}
+                >
+                  Pengeluaran
+                </Text>
+              </View>
+            ) : (
+              <LinearGradient
+                start={{ x: 0, y: 0 }}
+                end={{ x: 1, y: 0 }}
+                colors={["#ae823aff", "#ffc66aff"]}
+                style={{
+                  padding: 9,
+                  borderRadius: 30,
+                  borderWidth: 1,
+                  borderColor: "#e0ac6a",
+                }}
+              >
+                <Text
+                  style={{ textAlign: "center", color: "white", fontSize: 12 }}
+                >
+                  Pengeluaran
+                </Text>
+              </LinearGradient>
+            )}
           </TouchableOpacity>
 
-          <TouchableOpacity style={{ flex: 1 }}>
-            <LinearGradient
-              start={{ x: 0, y: 0 }}
-              end={{ x: 1, y: 0 }}
-              colors={["#ae823aff", "#ffc66aff"]}
-              style={{
-                padding: 9,
-                borderRadius: 30,
-              }}
-            >
-              <Text
-                style={{ textAlign: "center", color: "white", fontSize: 12 }}
+          <TouchableOpacity
+            style={{ flex: 1 }}
+            onPress={() => setIsPage("Gabungan")}
+          >
+            {isPage == "Gabungan" ? (
+              <View
+                style={{
+                  padding: 9,
+                  borderWidth: 1,
+                  borderColor: "#e0ac6a",
+                  borderRadius: 30,
+                  backgroundColor: "white",
+                }}
               >
-                Gabungan
-              </Text>
-            </LinearGradient>
+                <Text
+                  style={{
+                    textAlign: "center",
+                    color: "#e0ac6a",
+                    fontSize: 12,
+                  }}
+                >
+                  Gabungan
+                </Text>
+              </View>
+            ) : (
+              <LinearGradient
+                start={{ x: 0, y: 0 }}
+                end={{ x: 1, y: 0 }}
+                colors={["#ae823aff", "#ffc66aff"]}
+                style={{
+                  padding: 9,
+                  borderRadius: 30,
+                  borderWidth: 1,
+                  borderColor: "#e0ac6a",
+                }}
+              >
+                <Text
+                  style={{ textAlign: "center", color: "white", fontSize: 12 }}
+                >
+                  Gabungan
+                </Text>
+              </LinearGradient>
+            )}
           </TouchableOpacity>
         </View>
       </View>

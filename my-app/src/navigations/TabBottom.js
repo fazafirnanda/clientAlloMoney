@@ -12,7 +12,11 @@ import FormBudgetBulanan from "../views/FormBudgetBulanan";
 import Akun from "../../assets/profile.png";
 import Beranda from "../../assets/house-2.png";
 import Aktivitas from "../../assets/clipboard-text.png";
+import add from "../../assets/add.png";
 import DompetFocused from "../../assets/solar_wallet-outline.png";
+// import CreateTransaction from "../views/CreateTransaction";
+import TambahTransaksi from "../views/TambahTransaksi";
+import HomeSplashScreen from "../views/Login/HomeSplashScreen";
 
 const Tab = createBottomTabNavigator();
 
@@ -31,15 +35,21 @@ const TabManager = () => {
             icon = DompetFocused;
           } else if (route.name == "Akun") {
             icon = Akun;
+          } else if (route.name == "Transaksi Baru") {
+            icon = add;
           }
-          return <Image source={icon} style={{ width: 25, height: 25 }} />;
+          return <Image source={icon} style={{ width: 30, height: 30 }} />;
         },
       })}
     >
       <Tab.Screen name="Beranda" component={Home}></Tab.Screen>
       <Tab.Screen name="Aktivitas" component={Transaksi}></Tab.Screen>
-      <Tab.Screen name="Dompet" component={TabunganImpian}></Tab.Screen>
-      <Tab.Screen name="Akun" component={CatatTabunganmu}></Tab.Screen>
+      <Tab.Screen
+        name="Transaksi Baru"
+        component={TambahTransaksi}
+      ></Tab.Screen>
+      <Tab.Screen name="Dompet" component={Dompet}></Tab.Screen>
+      <Tab.Screen name="Akun" component={FormBudgetBulanan}></Tab.Screen>
     </Tab.Navigator>
   );
 };

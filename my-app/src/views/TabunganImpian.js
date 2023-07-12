@@ -17,7 +17,7 @@ import gambar1 from "../../assets/BI.png";
 import gambar2 from "../../assets/Taxes.png";
 
 import bca from "../../assets/bca.png";
-export default function TabunganImpian() {
+export default function TabunganImpian({ navigation }) {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
       <ScrollView>
@@ -34,10 +34,10 @@ export default function TabunganImpian() {
               alignItems: "center",
             }}
           >
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.goBack()}>
               <Image source={back} style={{ width: 27, height: 27 }} />
             </TouchableOpacity>
-            <Text>Tabungan Impian</Text>
+            <Text style={{ fontWeight: "bold" }}>Tabungan Impian</Text>
             <TouchableOpacity>
               {/* <Image source={dots} style={{ width: 27, height: 27 }} /> */}
             </TouchableOpacity>
@@ -66,7 +66,9 @@ export default function TabunganImpian() {
             />
           </View>
 
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("CatatTabunganmu")}
+          >
             <LinearGradient
               start={{ x: 0, y: 0 }}
               end={{ x: 1, y: 0 }}

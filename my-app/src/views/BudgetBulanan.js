@@ -9,13 +9,15 @@ import {
   Dimensions,
   TouchableOpacity,
 } from "react-native";
+import { LinearGradient } from "expo-linear-gradient";
+
 import back from "../../assets/back.png";
 import dots from "../../assets/3dots.png";
 import CardNabung from "../components/atoms/CardNabung";
 import investment from "../../assets/Investments.png";
 import taxes from "../../assets/Taxes-1.png";
 
-export default function BudgetBulanan() {
+export default function BudgetBulanan({ navigation }) {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
       <ScrollView>
@@ -32,10 +34,10 @@ export default function BudgetBulanan() {
               alignItems: "center",
             }}
           >
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.goBack()}>
               <Image source={back} style={{ width: 27, height: 27 }} />
             </TouchableOpacity>
-            <Text>Budget Bulanan</Text>
+            <Text style={{ fontWeight: "bold" }}>Budget Bulanan</Text>
             <TouchableOpacity>
               {/* <Image source={dots} style={{ width: 27, height: 27 }} /> */}
             </TouchableOpacity>
@@ -65,17 +67,24 @@ export default function BudgetBulanan() {
           </View>
 
           <TouchableOpacity
-            style={{
-              padding: 20,
-              backgroundColor: "#b5883e",
-              borderRadius: 20,
-              marginTop: 27,
-              marginHorizontal: 15,
-            }}
+            onPress={() => navigation.navigate("FormBudgetBulanan")}
           >
-            <Text style={{ textAlign: "center", color: "white" }}>
-              Atur Budget
-            </Text>
+            <LinearGradient
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 0 }}
+              colors={["#ae823aff", "#ffc66aff"]}
+              style={{
+                padding: 20,
+                paddingHorizontal: 15,
+                borderRadius: 20,
+                marginTop: 27,
+                marginHorizontal: 15,
+              }}
+            >
+              <Text style={{ textAlign: "center", color: "white" }}>
+                Atur Budget
+              </Text>
+            </LinearGradient>
           </TouchableOpacity>
         </View>
       </ScrollView>

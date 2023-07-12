@@ -13,14 +13,15 @@ import {
   Button,
 } from "react-native";
 import React, { useState } from "react";
+import { LinearGradient } from "expo-linear-gradient";
 
 import back from "../../assets/back.png";
 import dots from "../../assets/3dots.png";
 import CardNabung from "../components/atoms/CardNabung";
 import bca from "../../assets/bca.png";
-import group from "../../assets/Groupbudget.png";
+import group from "../../assets/Group-1.png";
 
-export default function CatatTabunganmu() {
+export default function CatatTabunganmu({ navigation }) {
   const [namaTabungan, setNamaTabungan] = useState("");
   const [targetSaldo, setTargetSaldo] = useState("");
   const [deskripsi, setDeskripsi] = useState("");
@@ -69,7 +70,7 @@ export default function CatatTabunganmu() {
                 alignItems: "center",
               }}
             >
-              <TouchableOpacity>
+              <TouchableOpacity onPress={() => navigation.goBack()}>
                 <Image source={back} style={{ width: 27, height: 27 }} />
               </TouchableOpacity>
               <Text style={{ fontWeight: "bold" }}>Catat Tabunganmu</Text>
@@ -87,8 +88,17 @@ export default function CatatTabunganmu() {
                 alignItems: "center",
               }}
             >
-              <View style={{ width: "40%", alignItems: "flex-end" }}>
-                <Image source={group} />
+              <View
+                style={{
+                  width: "35%",
+                  // backgroundColor: "black",
+                  // alignContent: "flex-end",
+                }}
+              >
+                <Image
+                  source={group}
+                  style={{ width: "100%", height: 90, resizeMode: "center" }}
+                />
               </View>
               <View style={{ width: "60%" }}>
                 <Text>
@@ -100,31 +110,62 @@ export default function CatatTabunganmu() {
 
           <View style={{ paddingTop: 35, paddingHorizontal: 20 }}>
             <View style={styles.container}>
+              <Text style={{ fontSize: 13 }}>Nama Tabungan</Text>
               <TextInput
                 style={styles.input}
                 placeholder="Nama Tabungan"
                 value={namaTabungan}
                 onChangeText={(text) => setNamaTabungan(text)}
               />
+              <Text style={{ fontSize: 13 }}>Target Saldo</Text>
               <TextInput
                 style={styles.input}
                 placeholder="Target Saldo"
                 value={targetSaldo}
                 onChangeText={(text) => setTargetSaldo(text)}
               />
+              <Text style={{ fontSize: 13 }}>Deskripsi</Text>
               <TextInput
                 style={styles.input}
                 placeholder="Deskripsi"
                 value={deskripsi}
                 onChangeText={(text) => setDeskripsi(text)}
               />
+              <Text style={{ fontSize: 13 }}>Target Waktu</Text>
               <TextInput
                 style={styles.input}
                 placeholder="Target Waktu"
                 value={targetWaktu}
                 onChangeText={(text) => setTargetWaktu(text)}
               />
-              <Button title="Simpan" onPress={handleSave} />
+              <TouchableOpacity
+                onPress={() => navigation.navigate("TargetRutin")}
+              >
+                <LinearGradient
+                  start={{ x: 0, y: 0 }}
+                  end={{ x: 1, y: 0 }}
+                  colors={["#ae823aff", "#ffc66aff"]}
+                  style={{
+                    padding: 15,
+                    paddingHorizontal: 15,
+                    borderRadius: 10,
+                    marginTop: 27,
+                    marginHorizontal: 15,
+                  }}
+                >
+                  <Text
+                    style={{
+                      textAlign: "center",
+                      color: "white",
+                      fontSize: 12,
+                      fontWeight: "bold",
+                    }}
+                  >
+                    Lanjutkan
+                  </Text>
+                </LinearGradient>
+              </TouchableOpacity>
+              {/* <Button title="Simpan" onPress={handleSave} /> */}
             </View>
           </View>
         </View>
@@ -136,7 +177,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 16,
-    alignItems: "center",
+    // alignItems: "center",
+
     justifyContent: "center",
     backgroundColor: "white",
   },
@@ -144,7 +186,9 @@ const styles = StyleSheet.create({
     width: "100%",
     height: 40,
     borderColor: "#D9D9D9",
-    borderWidth: 1,
+    fontSize: 12,
+    lineHeight: 16,
+    borderBottomWidth: 1,
     borderRadius: 5,
     marginBottom: 12,
     paddingLeft: 8,
